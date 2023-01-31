@@ -1,30 +1,24 @@
 class Solution {
-    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
-        int[] answer = {0, 0};
-        if(denom1 == denom2) {
-            answer[0] = numer1 + numer2;
-            answer[1] = denom1;
-        } else if(numer1 == 0) {
-            answer[0] = numer2;
-            answer[1] = denom2;
-        }  else if(numer2 == 0) {
-            answer[0] = numer1;
-            answer[1] = denom1;
-        } else if(denom1 == 1) {
-            answer[0] = numer1 * denom2 + numer2;
-            answer[1] = denom2;
-        } else if (denom2 == 1) {
-            answer[0] = numer2 * denom1 + numer1;
-            answer[1] = denom1;
-        } else {
-            answer[0] = numer1 * denom2 + numer2 * denom1;
-            answer[1] = denom1 * denom2;
-        }
-        
-        for(int i = answer[1]; i > 0; i--) {
-                if(answer[0] % i == 0 && answer[1] % i == 0) {
+    public int[] solution(int denum1, int num1, int denum2, int num2) {
+
+        int[] answer = {(denum1 * num2) + (denum2 * num1), num1 * num2};
+
+        if (answer[0] == answer[1]) {
+            answer[0] = 1;
+            answer[1] = 1;
+        } else if(answer[0] > answer[1]) {
+            for (int i = answer[0]/2; i >= 2; i--) {
+                if (answer[0] % i == 0 && answer[1] % i == 0) {
                     answer[0] /= i;
                     answer[1] /= i;
+                }
+            }
+        } else if(answer[1] > answer[0]) {
+            for (int i = answer[1]/2; i >= 2; i--) {
+                if (answer[1] % i == 0 && answer[0] % i == 0) {
+                    answer[0] /= i;
+                    answer[1] /= i;
+                }
             }
         }
         return answer;

@@ -5,18 +5,18 @@ class Solution {
         char[] codeArr = code.toCharArray();
         
         for(int i = 0; i < codeArr.length; i++){
-            mode = codeArr[i] == '1' ? !mode : mode;
-            
             if(codeArr[i] == '1') {
+                mode = !mode;
                 continue;
+                
             } else if(mode && i % 2 == 0){
                 answer += codeArr[i];
+                
             } else if(!mode && i % 2 != 0){
                 answer += codeArr[i];
             }
             
         }
-        
         
         return answer.length() == 0 ? "EMPTY" : answer;
     }

@@ -1,11 +1,9 @@
 class Solution {
     public String solution(String myString) {
         String answer = "";
-        for(int i = 0; i < myString.length(); i++){
-            answer +=
-                myString.charAt(i) == 'a' || myString.charAt(i) == 'A' ?
-                "A" : (""+myString.charAt(i)).toLowerCase();
-        }
+        
+        answer = myString.toLowerCase().replaceAll("a", "A");
+        
         return answer;
     }
 }
